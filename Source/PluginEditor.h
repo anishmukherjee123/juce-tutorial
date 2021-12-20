@@ -14,7 +14,7 @@
 //==============================================================================
 /**
 */
-class FirstProjectAudioProcessorEditor  : public juce::AudioProcessorEditor
+class FirstProjectAudioProcessorEditor  : public juce::AudioProcessorEditor, private juce::Slider::Listener
 {
 public:
     FirstProjectAudioProcessorEditor (FirstProjectAudioProcessor&);
@@ -25,12 +25,12 @@ public:
     void resized() override;
 
 private:
+    void sliderValueChanged (juce::Slider* slider) override; // method override from JUCE slider class
+    //FirstProjectAudioProcessor& audioProcessor; // reference the class its implementing
+    juce::Slider midiVolume; // slider object
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
     FirstProjectAudioProcessor& audioProcessor;
-    
-    // slider to change midi volume
-    juce::Slider midiVolume;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FirstProjectAudioProcessorEditor)
 };

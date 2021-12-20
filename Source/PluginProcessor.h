@@ -13,9 +13,10 @@
 //==============================================================================
 /**
 */
-class FirstProjectAudioProcessor  : public juce::AudioProcessor
+class FirstProjectAudioProcessor : public juce::AudioProcessor
 {
 public:
+    float noteOnVel; // volume variable set by slider
     //==============================================================================
     FirstProjectAudioProcessor();
     ~FirstProjectAudioProcessor() override;

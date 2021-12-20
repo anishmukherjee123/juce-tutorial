@@ -26,6 +26,8 @@ FirstProjectAudioProcessorEditor::FirstProjectAudioProcessorEditor (FirstProject
     midiVolume.setValue(1.0);
     // make the slide visible
     addAndMakeVisible(&midiVolume);
+    // add a listener to it
+    midiVolume.addListener(this); // this is the listener since we are extending the slider listener class
 }
 
 FirstProjectAudioProcessorEditor::~FirstProjectAudioProcessorEditor()
@@ -33,6 +35,12 @@ FirstProjectAudioProcessorEditor::~FirstProjectAudioProcessorEditor()
 }
 
 //==============================================================================
+
+void FirstProjectAudioProcessorEditor::sliderValueChanged (juce::Slider* slider)
+{
+    audioProcessor.noteOnVel = midiVolume.getValue();
+}
+    
 void FirstProjectAudioProcessorEditor::paint (juce::Graphics& g)
 {
     // (Our component is opaque, so we must completely fill the background with a solid colour)
